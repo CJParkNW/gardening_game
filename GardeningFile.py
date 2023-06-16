@@ -1,13 +1,13 @@
 # ****BASIC INFO*****
 import pygame
 import time
+import os
 # Initalizes the Module
 pygame.init()
 
 # Assign White & Black
 white = (248, 248, 248)
 black = (0, 0, 0) 
-red = (223, 50, 50)
 blue = (14, 77, 146)
 
 # Assigns Dimensions
@@ -20,14 +20,12 @@ window = pygame.display.set_mode((x, y))
 pygame.display.set_caption("Virtual Garden")
 
 # Establishes Font Size and Type
-font = pygame.font.Font('gamebit.ttf', 16) 
+font = pygame.font.Font(os.path.join('gamebit.ttf'), 16) 
 cont_font = pygame.font.Font('gamebit.ttf', 12) 
-
 # ****BASIC INFO*****
 
 
 # ****BASIC FUNCTIONS*****
-
 # Typewriter Effect (2)
 def typewriter(string, dx, dy):
   text = ''
@@ -51,13 +49,11 @@ def cont(string, dx, dy):
     window.blit(surface, text_dimensions)
     pygame.display.update()
     pygame.time.wait(25)
-
 # ****BASIC FUNCTIONS*****
 
 
 
 # ****ACTIVITIES****
-
 def watering():
   pass
 
@@ -159,11 +155,7 @@ def sowing_seeds():
               window.blit(background2, (0,0))
               window.blit(seed_packet7, (400, 200))
               pygame.display.update()
-              state = False
-        
-          
-      
-
+              state = False        
 
 def moving_seeds():
   planting = pygame.image.load('Planting1.png').convert()
@@ -271,7 +263,6 @@ def moving_seeds():
               pygame.display.update()
               time.sleep(3)
               state = False
-
         
 def sowing_seeds_instructions():
   instruct = pygame.image.load('InstructScreen.png').convert()
@@ -310,11 +301,14 @@ def sowing_seeds_instructions():
 
   enter = input()
 
-
+def sow_seeds_full():
+  sowing_seeds_instructions()
+  sowing_seeds()
+  moving_seeds()
+# ****ACTIVITIES****
 
 
 # ****INTRO SCREEN****
-
 # Load Background and Text for Intro (1)
 background1 = pygame.image.load('GardenFrame1.png').convert()
 
@@ -463,6 +457,7 @@ def intro():
   fourth_screen()
   fifth_screen()
   sixth_screen()
+# ****INTRO SCREEN****
 
 
 # ****SECOND SET SCREENS****
@@ -512,6 +507,81 @@ def eighth_screen():
 
   enter = input()
 
+
+background3 = pygame.image.load('GardenFrame3.png').convert()
+
+def ninth_screen():
+  window.fill(white)
+  window.blit(background3, (0,0))
+  pygame.display.update()
+
+  dx = 2
+  dy = 1.35
+  text = "Oh no! Our first plant's wilting."
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'We should go check on it.'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Press Enter.'
+  cont(text, dx, dy)
+
+  enter = input()
+
+background4 = pygame.image.load('GardenFrame4.png').convert()
+
+def tenth_screen():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()
+
+  dx = 2
+  dy = 1.35
+  text = "Amazing! Our plants are"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'growing really well.'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Press Enter.'
+  cont(text, dx, dy)
+
+  enter = input()
+
+def eleventh_screen():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()
+
+  dx = 2
+  dy = 1.35
+  text = "Now, let's choose our"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'third plant to grow!'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Press Enter.'
+  cont(text, dx, dy)
+
+  enter = input()
+# ****SECOND SET SCREENS****
+
+
+
+# ****CHOOSING SPECIFICALLY****
 def choose_plant_3():
   window.fill(white)
   window.blit(background2, (0,0))
@@ -702,12 +772,12 @@ def choose_vegetable():
 
   dx = 2
   dy = 1.35
-  text = "What type of flower:"
+  text = "What type of vegetable:"
   typewriter(text, dx, dy)
 
   dx = 2
   dy = 1.20
-  text = 'roses or sunflowers?'
+  text = 'bell pepper or corn?'
   typewriter(text, dx, dy)
 
   dx = 2
@@ -721,7 +791,7 @@ def choose_vegetable():
 
   while check == 0:
 
-    if choice == 'ROSE' or choice == 'ROSES' or choice == 'SUNFLOWER' or choice == 'SUNFLOWERS':
+    if choice == 'BELLPEPPER' or choice == 'BELLPEPPERS' or choice == 'BELL PEPPER' or choice == 'BELL PEPPERS' or choice == 'CORN' or choice == 'CORNS':
 
       window.fill(white)
       window.blit(background2, (0,0))
@@ -756,24 +826,432 @@ def choose_vegetable():
       choice = input()
       choice = choice.upper()
 
-  
+def choose_wo_fruit():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()
+
+  dx = 2
+  dy = 1.35
+  text = "Do you want to plant:"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'vegetables or flowers?'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Type your choice.'
+  cont(text, dx, dy)
+
+  check = 0
+  choice = input()
+  choice = choice.upper()
+
+  while check == 0:
+
+    if choice == 'VEGETABLE' or choice == 'VEGETABLES' or choice == 'FLOWER' or choice == 'FLOWERS':
+
+      window.fill(white)
+      window.blit(background4, (0,0))
+      pygame.display.update()  
+
+      dx = 2
+      dy = 1.35
+      text = "Great Choice! Now let's"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.20
+      text = "choose more specifically!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.1
+      text = 'Press Enter.'
+      cont(text, dx, dy)
+      check = 1
+
+      enter = input()
+
+      return choice
+    
+
+    else:
+      dx = 2
+      dy = 1.1
+      text = 'Please try again.'
+      cont(text, dx, dy)
+      choice = input()
+      choice = choice.upper()
+
+def choose_wo_flower():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()  
+
+  dx = 2
+  dy = 1.35
+  text = "Do you want to plant:"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'fruits, or vegetables?'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Type your choice.'
+  cont(text, dx, dy)
+
+  check = 0
+  choice = input()
+  choice = choice.upper()
+
+  while check == 0:
+
+    if choice == 'FRUITS' or choice == 'FRUIT' or choice == 'VEGETABLE' or choice == 'VEGETABLES':
+
+      window.fill(white)
+      window.blit(background4, (0,0))
+      pygame.display.update()  
+
+      dx = 2
+      dy = 1.35
+      text = "Great Choice! Now let's"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.20
+      text = "choose more specifically!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.1
+      text = 'Press Enter.'
+      cont(text, dx, dy)
+      check = 1
+
+      enter = input()
+
+      return choice
+    
+
+    else:
+      dx = 2
+      dy = 1.1
+      text = 'Please try again.'
+      cont(text, dx, dy)
+      choice = input()
+      choice = choice.upper()
+
+def choose_wo_vegetable():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()  
+
+  dx = 2
+  dy = 1.35
+  text = "Do you want to plant:"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'fruits or flowers?'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Type your choice.'
+  cont(text, dx, dy)
+
+  check = 0
+  choice = input()
+  choice = choice.upper()
+
+  while check == 0:
+
+    if choice == 'FRUITS' or choice == 'FRUIT' or choice == 'FLOWER' or choice == 'FLOWERS':
+
+      window.fill(white)
+      window.blit(background4, (0,0))
+      pygame.display.update()  
+
+      dx = 2
+      dy = 1.35
+      text = "Great Choice! Now let's"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.20
+      text = "choose more specifically!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.1
+      text = 'Press Enter.'
+      cont(text, dx, dy)
+      check = 1
+
+      enter = input()
+
+      return choice
+    
+
+    else:
+      dx = 2
+      dy = 1.1
+      text = 'Please try again.'
+      cont(text, dx, dy)
+      choice = input()
+      choice = choice.upper()
+
+def choose_fruit_third():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()  
+
+  dx = 2
+  dy = 1.35
+  text = "What type of fruit:"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'apples or grapes?'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Type your choice.'
+  cont(text, dx, dy)
+
+  check = 0
+  choice = input()
+  choice = choice.upper()
+
+  while check == 0:
+
+    if choice == 'APPLE' or choice == 'APPLES' or choice == 'GRAPE' or choice == 'GRAPES':
+
+      window.fill(white)
+      window.blit(background4, (0,0))
+      pygame.display.update()  
+
+      dx = 2
+      dy = 1.35
+      text = "Great!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.20
+      text = "Let's start again!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.1
+      text = 'Press Enter.'
+      cont(text, dx, dy)
+      check = 1
+
+      enter = input()
+
+      return choice
+    
+
+    else:
+      dx = 2
+      dy = 1.1
+      text = 'Please try again.'
+      cont(text, dx, dy)
+      choice = input()
+      choice = choice.upper()
+
+def choose_flower_third():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()  
+
+  dx = 2
+  dy = 1.35
+  text = "What type of flower:"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'roses or sunflowers?'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Type your choice.'
+  cont(text, dx, dy)
+
+  check = 0
+  choice = input()
+  choice = choice.upper()
+
+  while check == 0:
+
+    if choice == 'ROSE' or choice == 'ROSES' or choice == 'SUNFLOWER' or choice == 'SUNFLOWERS':
+
+      window.fill(white)
+      window.blit(background4, (0,0))
+      pygame.display.update()  
+
+      dx = 2
+      dy = 1.35
+      text = "Great!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.20
+      text = "Let's start again!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.1
+      text = 'Press Enter.'
+      cont(text, dx, dy)
+      check = 1
+
+      enter = input()
+
+      return choice
+    
+
+    else:
+      dx = 2
+      dy = 1.1
+      text = 'Please try again.'
+      cont(text, dx, dy)
+      choice = input()
+      choice = choice.upper()
+
+def choose_vegetable_third():
+  window.fill(white)
+  window.blit(background4, (0,0))
+  pygame.display.update()  
+
+  dx = 2
+  dy = 1.35
+  text = "What type of vegetable:"
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.20
+  text = 'bell pepper or corn?'
+  typewriter(text, dx, dy)
+
+  dx = 2
+  dy = 1.1
+  text = 'Type your choice.'
+  cont(text, dx, dy)
+
+  check = 0
+  choice = input()
+  choice = choice.upper()
+
+  while check == 0:
+
+    if choice == 'BELLPEPPER' or choice == 'BELLPEPPERS' or choice == 'BELL PEPPER' or choice == 'BELL PEPPERS' or choice == 'CORN' or choice == 'CORNS':
+
+      window.fill(white)
+      window.blit(background4, (0,0))
+      pygame.display.update()  
+
+      dx = 2
+      dy = 1.35
+      text = "Great!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.20
+      text = "Let's start again!"
+      typewriter(text, dx, dy)
+
+      dx = 2
+      dy = 1.1
+      text = 'Press Enter.'
+      cont(text, dx, dy)
+      check = 1
+
+      enter = input()
+
+      return choice
+    
+
+    else:
+      dx = 2
+      dy = 1.1
+      text = 'Please try again.'
+      cont(text, dx, dy)
+      choice = input()
+      choice = choice.upper()
+
+
+# ****CHOOSING SPECIFICALLY****
 def main():
   intro()
-  sowing_seeds_instructions()
-  sowing_seeds()
-  moving_seeds()
+  sow_seeds_full()
   seventh_screen()
   eighth_screen()
+
   second_plant = choose_plant_3()
+
   if second_plant == 'FRUIT' or second_plant == 'FRUITS':
     fruit = choose_fruit()
+    sow_seeds_full()
+    ninth_screen()
+    # Watering Function
+    tenth_screen()
+    eleventh_screen()
+    third_plant = choose_wo_fruit()
+    if third_plant == 'FLOWER' or third_plant == 'FLOWERS':
+      flower = choose_flower_third() 
+      sow_seeds_full()
+    else:
+      vegetable = choose_vegetable_third()
+      sow_seeds_full()
 
+    
   elif second_plant == 'FLOWER' or second_plant == 'FLOWERS':
     flower = choose_flower()
+    sow_seeds_full()
+    ninth_screen()
+    # Watering Function
+    tenth_screen()
+    eleventh_screen()
+    third_plant = choose_wo_flower()
+    if third_plant == 'FRUIT' or third_plant == 'FRUITS':
+      fruit = choose_fruit_third()
+      sow_seeds_full()
+    else:
+      vegetable = choose_vegetable_third()
+      sow_seeds_full()
 
   else:
+    vegetable = choose_vegetable()
+    sow_seeds_full()
+    ninth_screen()
+    # Watering Function
+    tenth_screen()
+    eleventh_screen()
+    third_plant = choose_wo_vegetable()
+    if third_plant == 'FRUIT' or third_plant == 'FRUITS':
+      fruit = choose_fruit_third()
+      sow_seeds_full()
+    else:
+      flower = choose_flower_third()
+      sow_seeds_full()
   
+  
+main()
 
+## Need to add fun facts for plants.
 
 
 # References
